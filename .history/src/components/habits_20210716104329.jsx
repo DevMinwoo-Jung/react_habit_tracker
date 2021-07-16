@@ -35,7 +35,6 @@ class Habits extends Component {
           />
         ))}
       </ul>
-      <button className="habits-reset" onClick={this.props.onRest}>Rest All</button>
       </>
     );
   }

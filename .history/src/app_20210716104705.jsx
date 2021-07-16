@@ -36,15 +36,7 @@ class App extends Component {
   handleAdd = name => {
     const habits = [...this.state.habits, {id: Date.now(), name: name, count: 0}];
     this.setState({habits});
-  };
-
-  handleRest = () => {
-    const habits = this.state.habits.map(habit => {
-      habit.count = 0;
-      return habit;
-    });
-    this.setState({habits});
-  };
+  }
 
   render() {
     return (
@@ -57,7 +49,6 @@ class App extends Component {
     onDecrement={this.handleDecrement}
     onDelete={this.handleDelete}
     onAdd={this.handleAdd}
-    onRest={this.handleRest}
     />
     </>
     );

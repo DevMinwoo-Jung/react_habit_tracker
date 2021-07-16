@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import './app.css';
 import Habits from './components/habits';
-import Navbar from './components/navbar';
 
 
 class App extends Component {
@@ -34,17 +33,12 @@ class App extends Component {
   };
 
   render() {
-    return (
-    <>
-    <Navbar totalCount={this.state.habits.filter(item => item.count > 0).length}/>
-    <Habits
+    return <Habits
     habits={this.state.habits}
     onIncrement={this.handleIncrement}
     onDecrement={this.handleDecrement}
     onDelete={this.handleDelete}
-    />
-    </>
-    );
+    />;
   }
 }
 

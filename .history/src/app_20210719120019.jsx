@@ -61,8 +61,6 @@ class App extends Component {
       if(habit.count !== 0){
         return {...habit, count: 0}
       }
-
-      return habit;
     });
     this.setState({habits});
   };
@@ -72,7 +70,7 @@ class App extends Component {
 
   render() {
     return (
-    <div className="habits">
+    <>
 
     <Navbar totalCount={this.state.habits.filter(item => item.count > 0).length}/>
     <Habits   
@@ -83,7 +81,7 @@ class App extends Component {
     onAdd={this.handleAdd}
     onRest={this.handleRest}
     />
-    </div>
+    </>
     );
   }
 }

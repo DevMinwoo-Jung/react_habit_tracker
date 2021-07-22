@@ -37,6 +37,7 @@ class App extends Component {
     // habits[index].count = count < 0 ? 0 : count;
     // this.setState({ habits });
     const habits = this.state.habits.map(item => {
+      console.log(item);
       if(item.id === habit.id){
         return {...habit, count: habit.count > 0 ? habit.count - 1 : 0};
       } 
@@ -56,23 +57,27 @@ class App extends Component {
     this.setState({habits});
   };
 
-  handleRest = () => {
-    const habits = this.state.habits.map(habit => {
-      if(habit.count !== 0){
-        return {...habit, count: 0}
-      }
+  // handleRest = () => {
+  //   const habits = this.state.habits.map(habit => {
+  //     habit.count = 0;
+  //     return habit;
+  //   });
+  //   this.setState({habits});
+  // };
 
-      return habit;
+  handleRest = habit => {
+    const habits = this.state.habits.map(item => {
+      if(item === habit.count){
+        return {...habit, count: 0};
+      }
     });
     this.setState({habits});
   };
 
 
-
-
   render() {
     return (
-    <div className="habits">
+    <>
 
     <Navbar totalCount={this.state.habits.filter(item => item.count > 0).length}/>
     <Habits   
@@ -83,7 +88,7 @@ class App extends Component {
     onAdd={this.handleAdd}
     onRest={this.handleRest}
     />
-    </div>
+    </>
     );
   }
 }

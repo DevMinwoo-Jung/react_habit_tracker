@@ -21,8 +21,6 @@ class App extends Component {
 
       return item;
     })
-
-    
     this.setState({habits});
     // const habits = [...this.state.habits];
     // const index = habits.indexOf(habit);
@@ -31,19 +29,11 @@ class App extends Component {
   };
 
   handleDecrement = habit => {
-    // const habits = [...this.state.habits];
-    // const index = habits.indexOf(habit);
-    // const count = habits[index].count - 1;
-    // habits[index].count = count < 0 ? 0 : count;
-    // this.setState({ habits });
-    const habits = this.state.habits.map(item => {
-      if(item.id === habit.id){
-        return {...habit, count: habit.count > 0 ? habit.count - 1 : 0};
-      } 
-
-      return item;
-    })
-    this.setState({habits});
+    const habits = [...this.state.habits];
+    const index = habits.indexOf(habit);
+    const count = habits[index].count - 1;
+    habits[index].count = count < 0 ? 0 : count;
+    this.setState({ habits });
   };
 
   handleDelete = habit => {
@@ -58,21 +48,15 @@ class App extends Component {
 
   handleRest = () => {
     const habits = this.state.habits.map(habit => {
-      if(habit.count !== 0){
-        return {...habit, count: 0}
-      }
-
+      habit.count = 0;
       return habit;
     });
     this.setState({habits});
   };
 
-
-
-
   render() {
     return (
-    <div className="habits">
+    <>
 
     <Navbar totalCount={this.state.habits.filter(item => item.count > 0).length}/>
     <Habits   
@@ -83,7 +67,7 @@ class App extends Component {
     onAdd={this.handleAdd}
     onRest={this.handleRest}
     />
-    </div>
+    </>
     );
   }
 }
